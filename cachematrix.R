@@ -5,15 +5,15 @@
 ## The makeCacheMatrix funtion creates a special kind of matrix
 
 makeCacheMatrix <- function(x = matrix()) {
-          Inv <- NULL
-          set <- function(y) {
-                  x <<- y
-                  Inv <<- NULL
-          }
-          get <- function() x
-          setInverse <- function(solve) Inv <<- solve
-          getInverse <- function() Inv
-          list(set = set, get = get, setInverse = setInverse, getInverse = getInverse)
+        Inv <- NULL
+        set <- function(y) {
+                x <<- y
+                Inv <<- NULL
+        }
+        get <- function() x
+        setInverse <- function(solve) Inv <<- solve
+        getInverse <- function() Inv
+        list(set = set, get = get, setInverse = setInverse, getInverse = getInverse)
 }  
 
 
@@ -24,12 +24,12 @@ makeCacheMatrix <- function(x = matrix()) {
 cacheSolve <- function(x, ...) {
         Inv <- x$getInverse()
         if(!is.null(Inv)) {
-        message("getting cached data")
-        return(Inv)
-    }
-    data <- x$get()
-    Inv <- solve(data)
-    x$setInvers(Inv)
-    Inv
+                message("getting cached data")
+                return(Inv)
+        }
+        data <- x$get()
+        Inv <- solve(data)
+        x$setInvers(Inv)
+        Inv
 }        
 
