@@ -10,9 +10,9 @@ makeCacheMatrix <- function(x = matrix()) {
                 x <<- y
                 Inv <<- NULL
         }
-        get <- function() x
+        get <- function() x 
         setInverse <- function(solve) Inv <<- solve
-        getInverse <- function() Inv
+        getInverse <- function() Inv  
         list(set = set, get = get, setInverse = setInverse, getInverse = getInverse)
 }
 
@@ -22,6 +22,7 @@ makeCacheMatrix <- function(x = matrix()) {
 ## the function calculates the inverse of the matrix using the solve function and returns it.
 
 cacheSolve <- function(x, ...) {
+<<<<<<< HEAD
         Inv <- x$getInverse()  #loads the cache from makeCacheMatrix into an object called Inv
         if(!is.null(Inv)) {
                 message("getting cached data")
@@ -32,6 +33,18 @@ cacheSolve <- function(x, ...) {
         x$setInvers(Inv)       # saves the calculated inverse matrix to the cache
         Inv                    # returns the inverse matrix
 }
+=======
+        Inv <- x$getInverse()   #loads the cache from makeCacheMatrix into an object called Inv
+        if(!is.null(Inv)) {
+                message("getting cached data")
+                return(Inv)     #if cache is not empty, return the saved values
+        }
+        data <- x$get()         # loads the matrix into an object called data
+        Inv <- solve(data)      # calculates the inverse of the matrix using the solve function
+        x$setInvers(Inv)        # saves the calculated inverse matrix to the cache
+        Inv                     # returns the inverse matrix
+}        
+>>>>>>> FETCH_HEAD
 
 
 # Sample output from these functions:
